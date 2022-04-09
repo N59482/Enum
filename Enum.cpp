@@ -1,43 +1,65 @@
 #include <iostream>
 #include <cstdlib>
-#include <string>
 
 using namespace std;
 
 enum MOOD
-{
-	ANGRY,
-	CALM,
-	FUN
-};
+	{
+		ANGRY,
+		CALM,
+		FUN
+	};
 
-class Nika
-{
-	public:
+class Girl
+    {
+    	MOOD mood;
+    	public:
+    	Girl();
+    	MOOD getmood()
+    		{
+    			return mood;
+    		};
+    
+    	void setmood(const MOOD &mood)
+    		{
+    			this->mood = mood;
+    		};
+    };
 
-MOOD getmood()
-{
-	return mood;
-};
+Girl::Girl()
+	{
+		mood = CALM;
+	};
 
-void setmood(MOOD mood)
-{
-	this->mood=mood;
-};
-
-	private:
-	MOOD mood;
-};
-
-int main()////////////////////////???????????????????????cv
-{
-	Nika nika;
-	nika.setmood(MOOD::CALM);
-	if ((nika.getmood())==MOOD::CALM) {cout<<"Ника спокойна"<<endl;}
-	else {cout<<"Ника не спокойна!"<<endl;};
-	
-	return 0;
-}
+int main()
+    {
+    	srand(time(0));
+    	Girl nika;
+    	
+    	nika.setmood(MOOD(rand()%3));
+    
+    	switch(nika.getmood())
+    		{
+    			case ANGRY: 
+    			{
+    				cout<<"Ника очень зла!\n";
+    				break;
+    			};
+    			case CALM: 
+    			{
+    				cout<<"Ника спокойна\n";
+    				break;
+    			};
+    			case FUN: 
+    			{
+    				cout<<"Нике весело!\n";
+    				break;
+    			};
+    			default: cout<<"switch default\n";
+    		};
+    	
+    	return 0;
+    };
 
 
 
